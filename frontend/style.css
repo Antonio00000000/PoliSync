@@ -1,0 +1,64 @@
+.logo {
+    display: flex;
+    list-style: none;
+    /*evita che gli elementi si incolonnino ma li mette in riga*/
+    justify-content: center;
+    margin: 2vw 0;
+    /* centra il contenitore orizzontalmente nello schermo */
+    padding: 9%;
+    /*mi aumenta i bordi in modo da lasciare lo spazio solo per la barra del menù*/
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+     /*applica il font montserrat*/ 
+}
+
+.logo>img {
+    display: flex;
+    float: center;
+    width: 30%;
+    /* ingrandisce l'immagine*/
+    height: auto;
+    /*per non deformare l'immagine*/
+}
+
+.logo>h1 {
+    color: #088599;
+    font-size: 8vw;
+    /*mi adatta la grandezza delle scritte in base alla dimensione dello schermo*/
+}
+
+.logo>h2 {
+    padding-top: 1.5%;
+    /*sposta in basso le scritte più piccole*/
+    font-size: 6vw;
+    /*mi adatta la grandezza delle scritte in base alla dimensione dello schermo*/
+
+}
+
+.menu {
+    list-style: none;
+    position: sticky;
+    /*quando la barra del menù tocca il bordo superiore dello schermo non scorre più sopra*/
+    top: 5px;
+    background-color: #088599;
+    display: flex;
+    justify-content: space-around;
+    /* distribuisce i link e il form su tutta la riga */
+    align-items: center;
+    /* allinea tutto verticalmente al centro */
+    border-radius: 15px;
+    padding: 0.5% 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.menu>form {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.menu>a {
+    color: white;
+    text-decoration: none;
+    /*toglie le impostazioni di base dei link*/
+}

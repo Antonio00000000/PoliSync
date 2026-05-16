@@ -1,0 +1,129 @@
+/* :root è una pseudo-classe che seleziona l'elemento radice del documento (<html>).
+   Qui stiamo definendo delle "Variabili CSS" (custom properties). 
+   È una best practice: se in futuro vorrai cambiare il blu scuro, ti basterà 
+   modificarlo qui e cambierà automaticamente in tutto il sito.
+*/
+:root {
+  --primary-navy: #0f172a; 
+  --primary-purple: #6366f1; 
+  --light-bg: #f8fafc;
+  --white: #ffffff;
+  --text-main: #334155;
+  --text-muted: #64748b;
+}
+
+/* L'asterisco (*) è il selettore universale. 
+   Impostare margin e padding a 0 serve a fare un "reset", azzerando 
+   gli spazi predefiniti che i vari browser (Chrome, Safari, ecc.) aggiungono di default.
+   box-sizing: border-box fa in modo che il padding non aumenti la larghezza totale degli elementi.
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: var(--light-bg); /* Richiama la variabile definita sopra */
+  color: var(--text-main);
+}
+
+/* =========================================
+   STILI DELLA NAVBAR
+   ========================================= */
+.navbar-container {
+  display: flex; /* Attiva Flexbox, potentissimo per disporre gli elementi in riga o colonna */
+  justify-content: space-between; /* Spinge il logo tutto a sinistra e il menu tutto a destra */
+  align-items: center; /* Centra verticalmente gli elementi sulla stessa linea */
+  padding: 15px 5%;
+  background-color: var(--white);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Crea una leggera ombra sotto la barra */
+  
+  /* position: sticky fissa la barra in alto (top: 0) quando l'utente scorre la pagina verso il basso */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Assicura che la barra stia sempre "sopra" agli altri elementi della pagina */
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Crea uno spazio fisso di 10px tra l'immagine del logo e la scritta PoliSync */
+  text-decoration: none; /* Rimuove la sottolineatura standard dei link */
+}
+
+.logo-section img {
+  width: 55px; /* Leggermente più largo per compensare il taglio */
+  height: 40px; /* Altezza bloccata per tagliare la parte inferiore */
+  
+  /* Queste due regole fanno la magia: */
+  object-fit: cover; /* Riempie il riquadro ritagliando l'eccedenza */
+  object-position: top center; /* Allinea l'inquadratura alla parte alta (dove c'è il disegno) */
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700; /* Testo in grassetto */
+  color: var(--primary-navy);
+  display: flex;
+}
+
+.logo-text span {
+  color: var(--primary-purple); 
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Distanzia ogni link del menu di 25px dall'altro */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 1rem;
+  /* transition rende fluido il cambio di colore quando ci passi sopra col mouse */
+  transition: color 0.3s ease; 
+}
+
+/* :hover è uno "stato" che si attiva quando il cursore del mouse passa sopra l'elemento */
+.nav-links a:hover {
+  color: var(--primary-purple);
+}
+
+.cart-icon {
+  font-size: 1.3rem;
+  color: var(--primary-navy);
+}
+
+/* Stili per la barra di ricerca */
+.search-form {
+  display: flex;
+  align-items: center;
+  background-color: var(--light-bg);
+  border-radius: 20px; /* Arrotonda i bordi per creare un effetto "pillola" */
+  padding: 5px 15px;
+  border: 1px solid #e2e8f0;
+  transition: border-color 0.3s ease;
+}
+
+/* focus-within si attiva quando l'utente clicca DENTRO la barra per scrivere */
+.search-form:focus-within {
+  border-color: var(--primary-purple);
+}
+
+.search-form i {
+  color: var(--text-muted);
+  margin-right: 8px;
+}
+
+.search-form input {
+  border: none; /* Toglie il bordo standard e antiestetico dell'input HTML */
+  background: transparent;
+  outline: none; /* Rimuove il contorno blu di default che appare quando si digita */
+  font-size: 0.9rem;
+  color: var(--text-main);
+  width: 150px;
+}
