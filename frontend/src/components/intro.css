@@ -16,7 +16,7 @@
 }
 
 .hero-section h1 {
-  font-size: 3.5rem;
+  font-size: 5vw;
   color: var(--primary-navy);
   margin-bottom: 20px;
   font-weight: 700;
@@ -27,7 +27,7 @@
 }
 
 .hero-section p {
-  font-size: 1.2rem;
+  font-size: 1.5vw;
   color: var(--text-muted);
   max-width: 800px; /* Impedisce al testo di diventare troppo lungo e difficile da leggere su schermi larghi */
   line-height: 1.6; /* Aumenta lo spazio tra una riga di testo e l'altra per maggiore leggibilità */
@@ -37,6 +37,9 @@
 .hero-buttons {
   display: flex;
   gap: 20px; /* Spazio tra i due bottoni */
+  justify-content: center;
+  flex-wrap: wrap; /* Permette ai bottoni di andare a capo se lo schermo è minuscolo */
+  margin-top: 25px;
 }
 
 .btn-primary {
@@ -46,7 +49,7 @@
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2vw;
   /* Animiamo due proprietà: il colore di sfondo e la posizione (transform) */
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -65,7 +68,7 @@
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2vw;
   border: 2px solid var(--primary-navy);
   transition: all 0.3s ease;
 }
