@@ -1,38 +1,42 @@
-.logo {
+.facciata {
     display: flex;
-    list-style: none;
-    /*evita che gli elementi si incolonnino ma li mette in riga*/
-    justify-content: center;
-    margin: 2vw 0;
-    /* centra il contenitore orizzontalmente nello schermo */
-    padding: 9%;
-    /*mi aumenta i bordi in modo da lasciare lo spazio solo per la barra del menù*/
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 90vh;
     font-family: 'Montserrat', sans-serif;
-     /*applica il font montserrat*/ 
+    /*applico il font a tutta la sezione*/
 }
 
-.logo>img {
-    display: flex;
-    float: center;
-    width: 30%;
-    /* ingrandisce l'immagine*/
-    height: auto;
-    /*per non deformare l'immagine*/
-}
 
-.logo>h1 {
-    color: #088599;
-    font-size: 8vw;
-    /*mi adatta la grandezza delle scritte in base alla dimensione dello schermo*/
-}
-
-.logo>h2 {
-    padding-top: 1.5%;
-    /*sposta in basso le scritte più piccole*/
+.facciata h1 {
     font-size: 6vw;
     /*mi adatta la grandezza delle scritte in base alla dimensione dello schermo*/
+}
 
+.facciata h1 span {
+    color: #088599;
+}
+
+.facciata p {
+    font-size: 1.2vw;
+    /*mi adatta la grandezza delle scritte in base alla dimensione dello schermo*/
+    margin: 1% 5%;
+    text-align: center;
+}
+
+.bottoni {
+    display: flex;
+    gap: 20px;
+    margin-top: 10vh;
+}
+
+.bottoni * {
+    color: white;
+    text-decoration: none;
+    background-color: #112142;
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 
 .menu {
@@ -54,10 +58,16 @@
 .menu>form {
     display: flex;
     align-items: center;
-    border-radius: 4px;
+    padding-left: 0%;
+    justify-content: flex-end;
+     /* allinea il form a destra */
 }
 
-.menu>a {
+.menu>i {
+     justify-content: flex-end;
+}
+
+.menu>* {
     color: white;
     text-decoration: none;
     /*toglie le impostazioni di base dei link*/
