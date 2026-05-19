@@ -1,64 +1,161 @@
-.logo {
-    display: flex;
-    list-style: none;
-    /*evita che gli elementi si incolonnino ma li mette in riga*/
-    justify-content: center;
-    margin: 2vw 0;
-    /* centra il contenitore orizzontalmente nello schermo */
-    padding: 9%;
-    /*mi aumenta i bordi in modo da lasciare lo spazio solo per la barra del menù*/
-    align-items: center;
+/* NAVIGATION BAR */
+
+.navbar {
+    display: flex; /* Mette gli elementi in riga */
+    justify-content: space-between; /* Distribuisce lo spazio */
+    align-items: center; 
+    background-color: #088599; 
+    padding: 15px 5%; 
     font-family: 'Montserrat', sans-serif;
-     /*applica il font montserrat*/ 
 }
 
-.logo>img {
+.logo-container img {
+    height: 60px; 
+    width: auto;
+}
+
+.nav-links {
     display: flex;
-    float: center;
-    width: 30%;
-    /* ingrandisce l'immagine*/
-    height: auto;
-    /*per non deformare l'immagine*/
+    gap: 30px; /* Crea uno spazio di 30px tra un link e l'altro */
 }
 
-.logo>h1 {
-    color: #088599;
-    font-size: 8vw;
-    /*mi adatta la grandezza delle scritte in base alla dimensione dello schermo*/
+.nav-links a {
+    color: white;
+    text-decoration: none; /* Toglie la sottolineatura standard dei link */
+    font-weight: 600; 
+    font-size: 1.1rem;
+    transition: color 0.3s ease; /* Prepara un'animazione di 0.3 secondi per il cambio colore */
 }
 
-.logo>h2 {
-    padding-top: 1.5%;
-    /*sposta in basso le scritte più piccole*/
+.nav-links a:hover {
+    color: #112142; 
+}
+
+.nav-search form {
+    display: flex;
+    align-items: center;
+    background-color: white; 
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.nav-search input {
+    border: none; 
+    outline: none; /* Evita che compaia un rettangolo quando clicchi per scrivere */
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
+    background: transparent;
+
+}
+
+.nav-search i {
+    color: #088599; 
+    font-size: 1.2rem;
+    cursor: pointer; 
+}
+
+/* Header */
+
+.facciata {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    font-family: 'Montserrat', sans-serif;
+    /*applico il font a tutta la sezione*/
+}
+
+
+.facciata h1 {
     font-size: 6vw;
     /*mi adatta la grandezza delle scritte in base alla dimensione dello schermo*/
-
 }
 
-.menu {
-    list-style: none;
-    position: sticky;
-    /*quando la barra del menù tocca il bordo superiore dello schermo non scorre più sopra*/
-    top: 5px;
-    background-color: #088599;
+.facciata h1 span {
+    color: #088599;
+}
+
+.facciata p {
+    font-size: 1.2vw;
+    /*mi adatta la grandezza delle scritte in base alla dimensione dello schermo*/
+    margin: 1% 5%;
+    text-align: center;
+}
+
+.bottoni {
     display: flex;
-    justify-content: space-around;
-    /* distribuisce i link e il form su tutta la riga */
-    align-items: center;
-    /* allinea tutto verticalmente al centro */
-    border-radius: 15px;
-    padding: 0.5% 0;
-    font-family: 'Montserrat', sans-serif;
+    gap: 20px;
+    margin-top: 10vh;
 }
 
-.menu>form {
-    display: flex;
-    align-items: center;
-    border-radius: 4px;
-}
-
-.menu>a {
+.bottoni * {
     color: white;
     text-decoration: none;
-    /*toglie le impostazioni di base dei link*/
+    background-color: #112142;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+
+/* SEZIONE SERVIZI (Vetrina principale) */
+
+
+.sezione-servizi {
+    padding: 5% 10%; 
+    text-align: center; 
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.sezione-servizi h2 {
+    color: #112142; 
+    font-size: 2.5vw; /* Dimensione del testo reattiva alla larghezza dello schermo */
+    margin-bottom: 40px; 
+}
+
+.contenitore-card {
+    display: flex;
+    justify-content: space-between; /* Distribuisce lo spazio rimanente uniformemente tra le card */
+    gap: 30px; /* Crea uno spazio vuoto di 30px tra una card e l'altra */
+}
+
+.card {
+    background-color: #f9f9f9; 
+    border-radius: 15px; 
+    padding: 30px 20px; 
+    width: 30%; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    transition: transform 0.3s ease; /* Prepara un'animazione fluida che durerà 0.3 secondi quando la card si muove */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Quando passi il mouse sopra (.hover), la card si sposta verso l'alto di 10 pixel */
+}
+
+.icona-servizio {
+    font-size: 3rem; /* Ingrandisce l'icona di Bootstrap */
+    color: #088599; 
+    margin-bottom: 15px; 
+}
+
+.card h3 {
+    color: #112142; 
+    margin-bottom: 10px; 
+}
+
+.card p {
+    color: #555; 
+    line-height: 1.5; /* Aumenta l'interlinea per migliorare la leggibilità */
+}
+
+/* FOOTER (Piè di pagina) */
+
+.pie-di-pagina {
+    background-color: #112142; 
+    color: white; 
+    text-align: center; 
+    padding: 20px 0; 
+    margin-top: 50px; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem; /* Rimpicciolisce leggermente il testo rispetto al corpo normale */
 }
