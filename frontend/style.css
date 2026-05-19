@@ -7,11 +7,17 @@
     background-color: #088599; 
     padding: 15px 5%; 
     font-family: 'Montserrat', sans-serif;
+    border-radius: 0 0 15px 15px; /* Arrotonda solo gli angoli inferiori della navbar */
+    position: sticky; /* Rende la navbar "appiccicosa" */
+    top: 0; /* La navbar rimane in cima alla pagina quando si scorre */
 }
 
 .logo-container img {
-    height: 60px; 
+    height: 40px; 
     width: auto;
+    background-color: white;
+    padding: 10%;
+    border-radius: 100%; /* Rende l'immagine rotonda */
 }
 
 .nav-links {
@@ -45,7 +51,6 @@
     padding: 5px;
     font-family: 'Montserrat', sans-serif;
     background: transparent;
-
 }
 
 .nav-search i {
