@@ -1,0 +1,56 @@
+.nuova-carta {
+    background-color: #f0f0f0;
+    /* Colore di sfondo della carta */
+    border-radius: 10px;
+    /* Angoli arrotondati */
+    padding: 20px;
+    /* Spaziatura interna */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Ombra per un effetto di profondità */
+    width: 30vw;
+    /* La carta occupa il 30% della larghezza della finestra in modo da mettere 2 carte una accanto all'altra */
+    list-style: none;
+}
+
+.nuova-carta i {
+    font-size: 2vw;
+    /* Dimensione dell'icona reattiva alla larghezza dello schermo */
+    color: #088599;
+    /* Colore dell'icona */
+}
+
+.nuova-carta:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Ombra più intensa al passaggio del mouse */
+    transform: translateY(-5px);
+    /* Solleva leggermente la carta al passaggio del mouse */
+    transition: all 0.3s ease;
+    /* Transizione fluida per l'effetto hover */
+}
+
+.nuova-carta h3 {
+    color: #112142;
+    /* Colore del titolo */
+    font-size: 1.5vw;
+    /* Dimensione del testo reattiva alla larghezza dello schermo */
+    margin-bottom: 10px;
+    /* Spazio sotto il titolo */
+}
+
+.nuova-carta h4 {
+    color: #088599;
+    /* Colore della data */
+    font-size: 1.2vw;
+    /* Dimensione del testo reattiva alla larghezza dello schermo */
+    margin-bottom: 15px;
+    /* Spazio sotto la data */
+}
+
+.nuova-carta p {
+    color: #333;
+    /* Colore del testo della descrizione */
+    font-size: 1vw;
+    /* Dimensione del testo reattiva alla larghezza dello schermo */
+    line-height: 1.5;
+    /* Altezza della linea per una migliore leggibilità */
+}

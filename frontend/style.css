@@ -5,7 +5,7 @@
     justify-content: space-between; /* Distribuisce lo spazio */
     align-items: center; 
     background-color: #088599; 
-    padding: 15px 5%; 
+    padding: 0.5% 5%; 
     font-family: 'Montserrat', sans-serif;
     border-radius: 0 0 15px 15px; /* Arrotonda solo gli angoli inferiori della navbar */
     position: sticky; /* Rende la navbar "appiccicosa" */
@@ -13,11 +13,12 @@
 }
 
 .logo-container img {
-    height: 40px; 
+    height: 2vw; /* Imposta l'altezza dell'immagine in modo che sia reattiva alla larghezza dello schermo */
     width: auto;
     background-color: white;
     padding: 10%;
     border-radius: 100%; /* Rende l'immagine rotonda */
+    margin-left: auto; /* Spinge il logo verso destra */
 }
 
 .nav-links {
@@ -29,7 +30,7 @@
     color: white;
     text-decoration: none; /* Toglie la sottolineatura standard dei link */
     font-weight: 600; 
-    font-size: 1.1rem;
+    font-size: 1vw;/* Imposta la dimensione del testo in modo che sia reattiva alla larghezza dello schermo */
     transition: color 0.3s ease; /* Prepara un'animazione di 0.3 secondi per il cambio colore */
 }
 
@@ -41,7 +42,7 @@
     display: flex;
     align-items: center;
     background-color: white; 
-    padding: 5px 15px;
+    padding: 1% 10px;
     border-radius: 20px;
 }
 
@@ -55,12 +56,12 @@
 
 .nav-search i {
     color: #088599; 
-    font-size: 1.2rem;
+    font-size: 1vw; /* Imposta la dimensione dell'icona in modo che sia reattiva alla larghezza dello schermo */
     cursor: pointer; 
 }
 
 html {
-    scroll-behavior: smooth;/*mi rende lo scorrimento fluido*/
+    scroll-behavior: smooth;/*mi rende lo scorrimento fluido quando premo sui bottoni della barra di ricerca*/
 }
 
 /* Header */
@@ -101,8 +102,9 @@ html {
 .bottoni * {
     color: white;
     text-decoration: none;
+    justify-content: center /* Centra il testo all'interno dei bottoni */
     background-color: #112142;
-    padding: 10px 20px;
+    padding: 1% 10%;
     border-radius: 10px;
 }
 
