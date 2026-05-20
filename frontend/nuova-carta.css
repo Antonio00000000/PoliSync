@@ -10,10 +10,14 @@
     width: 30vw;
     /* La carta occupa il 30% della larghezza della finestra in modo da mettere 2 carte una accanto all'altra */
     list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 400px;
 }
 
 .nuova-carta i {
-    font-size: 2vw;
+    font-size: 3vw;
     /* Dimensione dell'icona reattiva alla larghezza dello schermo */
     color: #088599;
     /* Colore dell'icona */
@@ -33,7 +37,7 @@
     /* Colore del titolo */
     font-size: 1.5vw;
     /* Dimensione del testo reattiva alla larghezza dello schermo */
-    margin-bottom: 10px;
+    margin-bottom: 10%;
     /* Spazio sotto il titolo */
 }
 
@@ -42,7 +46,7 @@
     /* Colore della data */
     font-size: 1.2vw;
     /* Dimensione del testo reattiva alla larghezza dello schermo */
-    margin-bottom: 15px;
+    margin-bottom: 15%;
     /* Spazio sotto la data */
 }
 
