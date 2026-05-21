@@ -1,3 +1,9 @@
+.contenitore-eventi, .contenitore-aula,.contenitore-oggetti, .contenitore-servizi, .contenitore-prodotti {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;/* Spazio tra le carte */
+}
+
 .nuova-carta {
     background-color: #f0f0f0;
     /* Colore di sfondo della carta */
