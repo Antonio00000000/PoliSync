@@ -10,6 +10,7 @@
     border-radius: 0 0 15px 15px; /* Arrotonda solo gli angoli inferiori della navbar */
     position: sticky; /* Rende la navbar "appiccicosa" */
     top: 0; /* La navbar rimane in cima alla pagina quando si scorre */
+    z-index: 9999; /* Assicura che la navbar sia sempre sopra gli altri elementi */
 }
 
 .logo-container img {
