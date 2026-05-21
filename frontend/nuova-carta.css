@@ -2,6 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;/* Spazio tra le carte */
+    display: flex;
+    align-items: stretch; /* Allinea le carte in altezza */
+    justify-content: space-between; /* Distribuisce le carte con spazio tra di loro */
 }
 
 .nuova-carta {
@@ -19,7 +22,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    max-width: 400px;
+    max-width: 300px;
 }
 
 .nuova-carta i {
@@ -52,7 +55,7 @@
     /* Colore della data */
     font-size: 1.2vw;
     /* Dimensione del testo reattiva alla larghezza dello schermo */
-    margin-bottom: 15%;
+    margin-bottom: 10%;
     /* Spazio sotto la data */
 }
 
@@ -76,5 +79,5 @@
     /* La carta occupa il 30% della larghezza del contenitore per permettere 3 carte affiancate */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* Ombra per un effetto di profondità */
-    max-width: 400px;
+    max-width: 300px;
  }
