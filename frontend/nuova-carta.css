@@ -41,7 +41,7 @@
     /* Transizione fluida per l'effetto hover */
 }
 
-.nuova-carta h3 {
+.nuova-carta #Titolo {
     color: #112142;
     /* Colore del titolo */
     font-size: 1.5vw;
@@ -50,7 +50,7 @@
     /* Spazio sotto il titolo */
 }
 
-.nuova-carta h4 {
+.nuova-carta #Data {
     color: #088599;
     /* Colore della data */
     font-size: 1.2vw;
@@ -59,7 +59,7 @@
     /* Spazio sotto la data */
 }
 
-.nuova-carta p {
+.nuova-carta #Descrizione {
     color: #333;
     /* Colore del testo della descrizione */
     font-size: 1vw;
