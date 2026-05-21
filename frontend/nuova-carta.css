@@ -1,10 +1,17 @@
-.contenitore-eventi, .contenitore-aula,.contenitore-oggetti, .contenitore-servizi, .contenitore-prodotti {
+.contenitore-eventi,
+.contenitore-aula,
+.contenitore-oggetti,
+.contenitore-servizi,
+.contenitore-prodotti {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;/* Spazio tra le carte */
+    gap: 20px;
+    /* Spazio tra le carte */
     display: flex;
-    align-items: stretch; /* Allinea le carte in altezza */
-    justify-content: space-between; /* Distribuisce le carte con spazio tra di loro */
+    align-items: stretch;
+    /* Allinea le carte in altezza */
+    justify-content: space-between;
+    /* Distribuisce le carte con spazio tra di loro */
 }
 
 .nuova-carta {
@@ -32,7 +39,11 @@
     /* Colore dell'icona */
 }
 
-.nuova-carta:hover, .eventi:hover, .aula:hover, .oggetto:hover, .servizio:hover, .prodotto:hover {
+.eventi:hover,
+.aula:hover,
+.oggetto:hover,
+.servizio:hover,
+.prodotto:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     /* Ombra più intensa al passaggio del mouse */
     transform: translateY(-5px);
@@ -41,35 +52,72 @@
     /* Transizione fluida per l'effetto hover */
 }
 
+.nuova-carta input {
+    width: 100%;
+    /* L'input occupa tutta la larghezza disponibile */
+    padding: 10px;
+    /* Spaziatura interna per rendere l'input più leggibile */
+    margin-bottom: 10px;
+    /* Spazio sotto ogni input */
+    border: 1px solid #ccc;
+    /* Bordo grigio chiaro per gli input */
+    border-radius: 5px;
+    /* Angoli arrotondati per gli input */
+    font-family: 'Montserrat', sans-serif;
+    max-width: 200px;
+    /* Effetto morbido per il focus */
+    transition: all 0.3s ease;
+    outline: none;
+    /* Rimuove il bordo nero predefinito del browser */
+}
+
+/* Quando l'utente clicca dentro (Focus) */
+.form-input:focus {
+    background-color: #ffffff;
+    border-color: #088599;
+    /* Il colore cyan/azzurro di PoliSync */
+    box-shadow: 0 0 0 3px rgba(8, 133, 153, 0.15);
+    /* Ombra esterna leggera */
+}
+
+/* Stile per il testo temporaneo (placeholder) */
+.form-input::placeholder {
+    color: #aaa;
+    font-weight: 400;
+}
+
 .nuova-carta #Titolo {
-    color: #112142;
-    /* Colore del titolo */
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     /* Dimensione del testo reattiva alla larghezza dello schermo */
     margin-bottom: 10%;
     /* Spazio sotto il titolo */
 }
 
-.nuova-carta #Data {
-    color: #088599;
-    /* Colore della data */
+.nuova-carta #Data,
+.nuova-carta #Prezzo {
+    color: #abe5ed;
     font-size: 1.2vw;
     /* Dimensione del testo reattiva alla larghezza dello schermo */
     margin-bottom: 10%;
     /* Spazio sotto la data */
+    max-height: 10px;
 }
 
 .nuova-carta #Descrizione {
-    color: #333;
-    /* Colore del testo della descrizione */
     font-size: 1vw;
     /* Dimensione del testo reattiva alla larghezza dello schermo */
     line-height: 1.5;
     /* Altezza della linea per una migliore leggibilità */
+    max-height: 10px;
+
 }
 
- .eventi, .aula, .oggetto, .servizio, .prodotto {
-    background-color: #f9f9f9;
+.eventi,
+.aula,
+.oggetto,
+.servizio,
+.prodotto {
+    background-color: #abe5ed;
     /* Colore di sfondo delle carte esistenti */
     border-radius: 15px;
     /* Angoli arrotondati */
@@ -80,4 +128,4 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* Ombra per un effetto di profondità */
     max-width: 300px;
- }
+}
