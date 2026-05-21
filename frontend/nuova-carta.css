@@ -29,7 +29,7 @@
     /* Colore dell'icona */
 }
 
-.nuova-carta:hover {
+.nuova-carta,  .eventi, .aula, .oggetto, .servizio, .prodotto:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     /* Ombra più intensa al passaggio del mouse */
     transform: translateY(-5px);
@@ -64,3 +64,17 @@
     line-height: 1.5;
     /* Altezza della linea per una migliore leggibilità */
 }
+
+ .eventi, .aula, .oggetto, .servizio, .prodotto {
+    background-color: #f9f9f9;
+    /* Colore di sfondo delle carte esistenti */
+    border-radius: 15px;
+    /* Angoli arrotondati */
+    padding: 30px 20px;
+    /* Spaziatura interna */
+    width: 30vw;
+    /* La carta occupa il 30% della larghezza del contenitore per permettere 3 carte affiancate */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Ombra per un effetto di profondità */
+    max-width: 400px;
+ }

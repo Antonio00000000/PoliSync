@@ -102,7 +102,7 @@ html {
 .bottoni * {
     color: white;
     text-decoration: none;
-    justify-content: center /* Centra il testo all'interno dei bottoni */
+    justify-content: center; /* Centra il testo all'interno dei bottoni */
     background-color: #112142;
     padding: 1% 10%;
     border-radius: 10px;
