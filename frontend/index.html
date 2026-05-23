@@ -9,11 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="nuova-carta.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/carta.css" />
+  <link rel="stylesheet" href="css/login.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
 
-  <link rel="icon" type="image/png" href="public/logo.png" />
+  <link rel="icon" type="image/png" href="immagini/logo.png" />
 
   <title>PoliSync</title>
 </head>
@@ -22,7 +23,7 @@
 
   <nav class="navbar">
     <div class="logo-container">
-      <img src="public/logo_Background Removal.png" alt="Logo PoliSync">
+      <img src="immagini/logo_Background Removal.png" alt="Logo PoliSync">
     </div>
 
     <div class="nav-links">
@@ -92,6 +93,15 @@
       </div>
     </div>
 
+    <div class="login">
+      <h2>Accedi al Tuo Account</h2>
+      <form class="form-login" action="">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button type="submit" class="btn-primary">Accedi</button>
+      </form>
+    </div>
+
     <article id="eventi">
       <h2>Eventi in Arrivo</h2>
       <div class="contenitore-eventi">
@@ -111,10 +121,11 @@
     <article id="studio">
       <h2>Aule Studio Disponibili</h2>
       <div class="contenitore-aula">
- 
+
         <div class="aula">
           <h3>Aula Magna</h3>
-          <p>Capienza: 100 posti </p><p> Dotata di proiettore e Wi-Fi</p>
+          <p>Capienza: 100 posti </p>
+          <p> Dotata di proiettore e Wi-Fi</p>
         </div>
 
       </div>
@@ -138,7 +149,7 @@
     <article id="prodotti">
       <h2>Prodotti in Evidenza</h2>
       <div class="contenitore-prodotti">
-        
+
         <div class="nuova-carta">
           <i class="bi bi-file-plus-fill"></i>
           <div class="nuovo">
@@ -170,6 +181,7 @@
       </div>
     </article>
   </section>
+
   </main>
 
   <footer class="pie-di-pagina">
