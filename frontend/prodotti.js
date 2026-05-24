@@ -1,45 +1,57 @@
-// Partiamo con un array (una lista) completamente vuoto. 
-// Qui dentro salveremo tutti gli oggetti "prodotto" creati dall'utente.
-let listaProdotti = [];
+// URL dell'API del nostro server (Porta 5000, come definito nel server.js)
+const API_URL = "http://localhost:5000/api/prodotti";
+
+// COLLEGAMENTO CON IL DOM (HTML)
+const contenitore = document.getElementById("lista-dinamica-prodotti");
+const form = document.getElementById("form-aggiungi-prodotto");
+const bottoneAggiungi = document.getElementById("bottone-aggiungi"); 
+
+// =======================================================================
+// 1. FUNZIONE PER CHIEDERE I PRODOTTI AL DATABASE (Operazione GET)
+// =======================================================================
+// Usiamo 'async' perché chiedere dati a un server richiede tempo e dobbiamo aspettare la risposta
+async function caricaProdottiDalDatabase() {
+    try {
+        // fetch() bussa alla porta del server per chiedere i dati
+        const risposta = await fetch(API_URL);
+        
+        // Trasformiamo la risposta del server in una lista di oggetti leggibile da JS
+        const listaProdotti = await risposta.json();
+        
+        // Passiamo questa lista alla funzione che si occupa di disegnarli a schermo
+        aggiornaSchermo(listaProdotti);
+    } catch (errore) {
+        console.error("Errore durante il caricamento dei prodotti dal server:", errore);
+    }
+}
+
+// Avviamo questa funzione immediatamente all'apertura del sito, 
+// così lo schermo caricherà i prodotti salvati in precedenza da chiunque!
+caricaProdottiDalDatabase();
 
 
-// 2. COLLEGAMENTO TRA JAVASCRIPT E HTML (Il DOM)
-
-// 'Peschiamo' gli elementi della pagina web usando i loro ID.
-// In questo modo JavaScript può vederli e modificarli.
-const contenitore = document.getElementById("lista-dinamica-prodotti"); // Il div gigante che contiene tutto
-const form = document.getElementById("form-aggiungi-prodotto");         // Il modulo con i campi di testo
-const bottoneAggiungi = document.getElementById("bottone-aggiungi");    // L'icona col "+" che fa da pulsante
-
-// 3. LA FUNZIONE CHE DISEGNA L'INTERFACCIA GRAFICA
-// Questa funzione ha il compito di leggere l'array e trasformarlo in HTML
-function aggiornaSchermo() {
+// =======================================================================
+// 2. FUNZIONE PER STAMPARE I PRODOTTI A SCHERMO
+// =======================================================================
+// Riceve la lista dei prodotti dal database come parametro
+function aggiornaSchermo(prodottiDaStampare) {
     
-    // FASE A: PULIZIA
-    // Se svuotassimo l'intero contenitore, cancelleremmo anche il form!
-    // Quindi cerchiamo solo i div che hanno la classe ".prodotto" e li rimuoviamo.
+    // Pulizia delle vecchie carte prodotto (Il form a sinistra NON viene toccato)
     let vecchiProdotti = contenitore.querySelectorAll(".prodotto");
     for (let i = 0; i < vecchiProdotti.length; i++) {
-        vecchiProdotti[i].remove(); // Rimuove fisicamente la vecchia carta dalla pagina
+        vecchiProdotti[i].remove();
     }
 
-    // FASE B: STAMPA DEI DATI AGGIORNATI
-    // Scorriamo il nostro array con un ciclo 'for'. 
-    // Per ogni prodotto che troviamo nell'array, creiamo una nuova carta.
-    for (let i = 0; i < listaProdotti.length; i++) {
-        let prodotto = listaProdotti[i]; // Estraiamo il singolo prodotto su cui stiamo lavorando
+    // Ciclo per stampare la lista reale che arriva dal database
+    for (let i = 0; i < prodottiDaStampare.length; i++) {
+        let prodotto = prodottiDaStampare[i]; 
 
-        // 1. Creiamo un nuovo elemento 'div' (un contenitore vuoto)
         let divProdotto = document.createElement("div");
-        
-        // 2. Gli assegniamo la classe CSS per fargli prendere lo stile grafico delle carte
         divProdotto.classList.add("prodotto");
 
-        // 3. Inseriamo i dati del prodotto dentro l'HTML del div.
-        // Usiamo i backtick ( ` ) per andare a capo comodamente e ${} per inserire le variabili.
         divProdotto.innerHTML = `
             <h3>${prodotto.titolo}</h3>
-            <p><strong>Prezzo:</strong> ${prodotto.prezzo}€</p>
+            <p><strong>Prezzo:</strong> ${prodotto.prezzo}£</p>
             <p>${prodotto.descrizione}</p>
             <p style="font-size: 0.85em; margin-top: 10px; color: #555;">
                 <i class="bi bi-calendar3"></i> Anno: ${prodotto.anno} <br>
@@ -47,61 +59,73 @@ function aggiornaSchermo() {
             </p>
         `;
 
-        // 4. "Appendiamo" (attacchiamo) questa carta appena completata dentro il contenitore principale.
-        // Dato che usiamo Flexbox nel CSS, i nuovi prodotti si posizioneranno in automatico a destra del form.
         contenitore.appendChild(divProdotto);
     }
 }
 
-// 4. L'EVENT LISTENER (Cosa succede quando si clicca sul "+")
-// Diciamo a JavaScript di rimanere in ascolto (listen) del 'click' sull'icona "+"
-bottoneAggiungi.addEventListener("click", function() {
+
+// =======================================================================
+// 3. GESTIONE DELL'INSERIMENTO (Operazione POST al click sul +)
+// =======================================================================
+// Rendiamo asincrona anche questa funzione perché dovrà comunicare con il server
+bottoneAggiungi.addEventListener("click", async function() {
     
-    // 1. LETTURA DEI DATI: Prendiamo i testi scritti dall'utente nelle varie caselle
     const nuovoTitolo = document.getElementById("input-titolo").value;
     const nuovoPrezzo = document.getElementById("input-prezzo").value;
     const nuovaDescrizione = document.getElementById("input-descrizione").value;
     const nuovoAnno = document.getElementById("input-annoaccademico").value;
     const nuovoVoto = document.getElementById("input-voto").value;
 
-    // 2. VALIDAZIONE (Controlli di sicurezza prima di salvare i dati)
-    
-    // Controllo A: Nessun campo deve essere lasciato vuoto ("")
+    // --- FASE DI VALIDAZIONE (Controlli identici a prima) ---
     if (nuovoTitolo === "" || nuovoPrezzo === "" || nuovaDescrizione === "" || nuovoAnno === "" || nuovoVoto === "") {
-        alert("Per favore, compila tutti i campi!");
-        return; // Il 'return' blocca istantaneamente l'esecuzione della funzione
+        alert("Per favore, compila tutti i campi, inclusi Anno e Voto!");
+        return; 
     }
-
-    // Controllo B: Il prezzo non può scendere sotto lo zero
     if (Number(nuovoPrezzo) < 0) {
         alert("Errore: Il prezzo non può essere negativo!");
         return; 
     }
-
-    // Controllo C: Il voto deve avere senso nel contesto universitario (tra 18 e 30)
     let votoNumerico = Number(nuovoVoto);
     if (votoNumerico < 18 || votoNumerico > 30) {
         alert("Errore: Il voto deve essere compreso tra 18 e 30!");
         return;
     }
+    // --- FINE VALIDAZIONE ---
 
-    // 3. SALVATAGGIO DEI DATI
-    // Se i dati superano tutti i controlli senza far scattare i 'return', creiamo un "Oggetto" JavaScript
+    // Pacchetto con i dati convalidati pronti per essere spediti
     const nuovoProdotto = {
         titolo: nuovoTitolo,
-        prezzo: nuovoPrezzo,
+        prezzo: Number(nuovoPrezzo), // Convertiamo in numero reale
         descrizione: nuovaDescrizione,
         anno: nuovoAnno,
         voto: votoNumerico
     };
 
-    // Inseriamo il nuovo oggetto alla fine del nostro array principale
-    listaProdotti.push(nuovoProdotto);
+    try {
+        // SPEDIZIONE AL SERVER (Richiesta POST)
+        const risposta = await fetch(API_URL, {
+            method: "POST", // Specifichiamo che vogliamo SCRIVERE dei dati
+            headers: {
+                "Content-Type": "application/json" // Avvisiamo il server che gli stiamo mandando del testo JSON
+            },
+            body: JSON.stringify(nuovoProdotto) // Trasformiamo il nostro oggetto JS in una stringa di testo
+        });
 
-    // 4. AGGIORNAMENTO GRAFICA E RESET
-    // Ora che l'array ha un elemento in più, chiamiamo la funzione per ridisegnare lo schermo
-    aggiornaSchermo();
+        // Se il server risponde che tutto è andato a buon fine (status 200 o 201)
+        if (risposta.ok) {
+            // Chiediamo di nuovo al database la lista aggiornata (che ora conterrà il nuovo prodotto)
+            caricaProdottiDalDatabase();
+            // Svuotiamo i campi del form
+            form.reset();
+        } else {
+            // Chiediamo al server di spiegarci quale è stato l'errore esatto
+            const dettagliErrore = await risposta.json();
+            alert("Errore MongoDB: " + dettagliErrore.errore);
+            console.log("Dettagli completi:", dettagliErrore);
+        }
 
-    // Infine, svuotiamo tutte le caselle del form per essere pronti al prossimo inserimento
-    form.reset();
+    } catch (errore) {
+        console.error("Errore durante l'invio del prodotto al server:", errore);
+        alert("Impossibile connettersi al server.");
+    }
 });
