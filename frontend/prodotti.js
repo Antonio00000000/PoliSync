@@ -51,7 +51,7 @@ function aggiornaSchermo(prodottiDaStampare) {
 
         divProdotto.innerHTML = `
             <h3>${prodotto.titolo}</h3>
-            <p><strong>Prezzo:</strong> ${prodotto.prezzo}£</p>
+            <p><strong>Prezzo:</strong> ${prodotto.prezzo}€</p>
             <p>${prodotto.descrizione}</p>
             <p style="font-size: 0.85em; margin-top: 10px; color: #555;">
                 <i class="bi bi-calendar3"></i> Anno: ${prodotto.anno} <br>
@@ -78,7 +78,7 @@ bottoneAggiungi.addEventListener("click", async function() {
 
     // --- FASE DI VALIDAZIONE (Controlli identici a prima) ---
     if (nuovoTitolo === "" || nuovoPrezzo === "" || nuovaDescrizione === "" || nuovoAnno === "" || nuovoVoto === "") {
-        alert("Per favore, compila tutti i campi, inclusi Anno e Voto!");
+        alert("Per favore, compila tutti i campi!");
         return; 
     }
     if (Number(nuovoPrezzo) < 0) {
