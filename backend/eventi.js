@@ -13,3 +13,7 @@ const eventoSchema = new mogoose.Schema({
         ref: 'User'
     }
 });
+
+const Evento = mogoose.model('Evento', eventoSchema);
+
+module.exports = Evento;

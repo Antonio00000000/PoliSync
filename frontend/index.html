@@ -30,8 +30,8 @@
       <!--uso i link come ancoraggi per far scorrere la pagina fino alla zona desiderata -->
       <a href="#eventi">Eventi</a>
       <a href="#studio">Aule Studio</a>
-      <a href="#oggettiSmarriti">Oggetti Smarriti</a>
       <a href="#prodotti">Prodotti</a>
+      <a href="#oggettiSmarriti">Oggetti Smarriti</a>
       <a href="#carrello"><i class="bi bi-cart"></i></a>
     </div>
 
@@ -94,7 +94,6 @@
       <form class="form-login" action="">
         <input type="text" id="username" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
-        <input type="text" id="matricola" placeholder="Matricola">
         <label for="dipartimento"></label>
         <select id="dipartimento" name="dipartimento">
           <option value="">Seleziona Dipartimento</option>
@@ -115,7 +114,7 @@
       <h2>Eventi in Arrivo</h2>
       <div class="contenitore-eventi">
         <div class="nuova-carta">
-          <i class="bi bi-calendar-plus-fill"></i>
+          <i class="bi bi-calendar-plus-fill" id="bottone-aggiungi" style="cursor: pointer;"></i>
           <div class="nuovo">
             <form action="">
               <input type="text" id="Titolo" placeholder="Titolo Evento">
