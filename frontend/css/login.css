@@ -34,3 +34,29 @@
     outline: none;
     /* Rimuove il bordo nero predefinito del browser */
 }
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #112142;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-primary:hover {
+    background-color: #0a1b2a;
+    /* Colore più scuro al passaggio del mouse */
+    cursor: pointer;
+}
+
+.bottoni-login {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    gap: 10px;
+}

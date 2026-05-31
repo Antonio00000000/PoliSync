@@ -54,10 +54,6 @@
         semplice e veloce.
       </p>
 
-      <div class="bottoni">
-        <a href="studio.html" class="btn-primary"> Trova un'Aula </a>
-        <a href="#prodotti" class="btn-secondary"> Esplora Prodotti </a>
-      </div>
     </div>
   </header>
 
@@ -94,11 +90,16 @@
     </div>
 
     <div class="login">
-      <h2>Accedi al Tuo Account</h2>
+      <h2>Accedi o Registra il Tuo Account</h2>
       <form class="form-login" action="">
         <input type="text" id="username" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
-        <button type="submit" class="btn-primary">Accedi</button>
+        <input type="text" id="matricola" placeholder="Matricola">
+        <input type="text" id="dipartimento" placeholder="Dipartimento">
+        <div class="bottoni-login">
+          <button type="submit" class="btn-primary">Accedi</button>
+          <button type="submit" class="btn-primary">Registrati</button>
+        </div>
       </form>
     </div>
 
@@ -131,32 +132,32 @@
       </div>
     </article>
 
-<article id="prodotti">
-  <h2>Prodotti in Evidenza</h2>
+    <article id="prodotti">
+      <h2>Prodotti in Evidenza</h2>
 
-  <div class="contenitore-prodotti" id="lista-dinamica-prodotti">
+      <div class="contenitore-prodotti" id="lista-dinamica-prodotti">
 
-    <div class="nuova-carta">
-      <i class="bi bi-file-plus-fill" id="bottone-aggiungi" style="cursor: pointer;"></i>
-      
-      <div class="nuovo">
-        <form id="form-aggiungi-prodotto">
-          
-          <input type="text" id="input-titolo" placeholder="Nome Prodotto">
-          <input type="number" id="input-prezzo" placeholder="Prezzo" min="0">
-          <input type="text" id="input-descrizione" placeholder="Descrizione Prodotto">
-          
-          <input type="text" id="input-annoaccademico" placeholder="Anno Accademico (es. 2024/25)">
-          <input type="number" id="input-voto" placeholder="Voto Esame" min="18" max="30">
-          
-        </form>
+        <div class="nuova-carta">
+          <i class="bi bi-file-plus-fill" id="bottone-aggiungi" style="cursor: pointer;"></i>
+
+          <div class="nuovo">
+            <form id="form-aggiungi-prodotto">
+
+              <input type="text" id="input-titolo" placeholder="Nome Prodotto">
+              <input type="number" id="input-prezzo" placeholder="Prezzo" min="0">
+              <input type="text" id="input-descrizione" placeholder="Descrizione Prodotto">
+
+              <input type="text" id="input-annoaccademico" placeholder="Anno Accademico (es. 2024/25)">
+              <input type="number" id="input-voto" placeholder="Voto Esame" min="18" max="30">
+
+            </form>
+          </div>
+        </div>
+
       </div>
-    </div>
+    </article>
 
-    </div>
-</article>
-
-        <article id="oggettiSmarriti">
+    <article id="oggettiSmarriti">
       <h2>Oggetti Smarriti</h2>
       <div class="contenitore-oggetti">
         <div class="nuova-carta">
@@ -182,7 +183,7 @@
     </p>
   </footer>
 
-    <script src="prodotti.js"></script>
+  <script src="prodotti.js"></script>
 </body>
 
 </html>
