@@ -1,4 +1,5 @@
 const mogoose = require('mongoose');
+const router = require('express').Router();
 mogoose.connect('mongodb://localhost:27017/eventi')
 .then(() => console.log('Connesso al database eventi'))
 .catch(err => console.error('Errore di connessione al database eventi:', err));
@@ -16,4 +17,4 @@ const eventoSchema = new mogoose.Schema({
 
 const Evento = mogoose.model('Evento', eventoSchema);
 
-module.exports = Evento;
+module.exports = router;

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const router = require('express').Router();
 mongoose.connect('mongodb://localhost:27017/utenti')
 .then(() => console.log('Connesso al database utenti'))
 .catch(err => console.error('Errore di connessione al database utenti:', err));
@@ -12,7 +13,7 @@ const utenteSchema = new mongoose.Schema({
 
 const Utente = mongoose.model('Utente', utenteSchema);
 
-module.exports = Utente;
+module.exports = router;
 
 const controllo = (username, password, dipartimento) => {
     try {
