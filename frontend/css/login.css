@@ -16,7 +16,7 @@
     align-items: center;
 }
 
-.login input {
+.login input, .login select {
     width: 100%;
     /* L'input occupa tutta la larghezza disponibile */
     padding: 10px;
