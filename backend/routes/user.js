@@ -6,7 +6,10 @@ mongoose.connect('mongodb://localhost:27017/utenti')
 
 //definizione dello schema dell'user collegandolo 1 a molti con i figli eventi di studio
 const utenteSchema = new mongoose.Schema({
-    username: String,
+    username: {
+        type: String,
+        unique: true,
+    },
     password: String,
     dipartimento: String
 });
