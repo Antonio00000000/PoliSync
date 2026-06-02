@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
 mongoose.connect('mongodb://localhost:27017/utenti')
 .then(() => console.log('Connesso al database utenti'))
 .catch(err => console.error('Errore di connessione al database utenti:', err));
 
-//definizione dello schema dell'user collegandolo 1 a molti con i figli eventi di studio
 const utenteSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -14,14 +14,20 @@ const utenteSchema = new mongoose.Schema({
     dipartimento: String
 });
 
-const Utente = mongoose.model('Utente', utenteSchema);
+//crea un nuovo utente
+const nuovoUtente = async (username, password, dipartimento) => {
+    //mi salvo la password criptata
+    let psw = await bcrypt.hash(password, 10);
+    const utente = new Utente({ username, psw, dipartimento });
+    return await utente.create();
+};
 
-module.exports = router;
-
-const controllo = (username, password, dipartimento) => {
+//funzione per controllare se le credenziali sono corrette al login
+const controllo = async (username, password, dipartimento) => {
     try {
-        const user = await Utente.find({ username, password, dipartimento });
-        if (user) {
+        const user = await Utente.findOne({ username });
+        //confronto la password inserita con quella salvata nel database hashata
+        if (bcrypt.compare(password, user.password)) {
             return true;
         } else {
             throw new Error('Credenziali non valide o devi prima registrarti');
@@ -31,3 +37,9 @@ const controllo = (username, password, dipartimento) => {
         throw err;  
     }
 };
+
+
+
+const Utente = mongoose.model('Utente', utenteSchema);
+
+module.exports = router;
