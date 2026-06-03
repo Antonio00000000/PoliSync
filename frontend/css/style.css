@@ -72,7 +72,11 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+<<<<<<< HEAD
     height: 35vh;
+=======
+    height:35vh;
+>>>>>>> 9463eb77172bc1b4ae1ccd858189630b0c45dc39
     font-family: 'Montserrat', sans-serif;
     /*applico il font a tutta la sezione*/
 }
