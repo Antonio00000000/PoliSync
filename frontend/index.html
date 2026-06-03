@@ -30,8 +30,8 @@
       <!--uso i link come ancoraggi per far scorrere la pagina fino alla zona desiderata -->
       <a href="#eventi">Eventi</a>
       <a href="#studio">Aule Studio</a>
-      <a href="#oggettiSmarriti">Oggetti Smarriti</a>
       <a href="#prodotti">Prodotti</a>
+      <a href="#oggettiSmarriti">Oggetti Smarriti</a>
       <a href="#carrello"><i class="bi bi-cart"></i></a>
     </div>
 
@@ -54,10 +54,6 @@
         semplice e veloce.
       </p>
 
-      <div class="bottoni">
-        <a href="studio.html" class="btn-primary"> Trova un'Aula </a>
-        <a href="#prodotti" class="btn-secondary"> Esplora Prodotti </a>
-      </div>
     </div>
   </header>
 
@@ -94,11 +90,23 @@
     </div>
 
     <div class="login">
-      <h2>Accedi al Tuo Account</h2>
+      <h2>Accedi o Registra il Tuo Account</h2>
       <form class="form-login" action="">
         <input type="text" id="username" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
-        <button type="submit" class="btn-primary">Accedi</button>
+        <label for="dipartimento"></label>
+        <select id="dipartimento" name="dipartimento">
+          <option value="" disabled selected>Seleziona Dipartimento</option><!-- disabled selection non permette di selezionerla come opzione ma di usarla solo come istruzione per indicare cosa inserire nella casella-->
+          <option value="Ingegneria Informatica">Ingegneria Informatica</option>
+          <option value="Ingegneria Elettronica">Ingegneria Elettronica</option>
+          <option value="Ingegneria Meccanica">Ingegneria Meccanica</option>
+          <option value="Ingegneria Civile">Ingegneria Civile</option>
+          <option value="Ingegneria Gestionale">Ingegneria Gestionale</option>
+        </select>
+        <div class="bottoni-login">
+          <button type="submit" class="btn-primary">Accedi</button>
+          <button type="submit" class="btn-primary">Registrati</button>
+        </div>
       </form>
     </div>
 
@@ -106,7 +114,7 @@
       <h2>Eventi in Arrivo</h2>
       <div class="contenitore-eventi">
         <div class="nuova-carta">
-          <i class="bi bi-calendar-plus-fill"></i>
+          <i class="bi bi-calendar-plus-fill" id="bottone-aggiungi" style="cursor: pointer;"></i>
           <div class="nuovo">
             <form action="">
               <input type="text" id="Titolo" placeholder="Titolo Evento">
@@ -131,32 +139,32 @@
       </div>
     </article>
 
-<article id="prodotti">
-  <h2>Prodotti in Evidenza</h2>
+    <article id="prodotti">
+      <h2>Prodotti in Evidenza</h2>
 
-  <div class="contenitore-prodotti" id="lista-dinamica-prodotti">
+      <div class="contenitore-prodotti" id="lista-dinamica-prodotti">
 
-    <div class="nuova-carta">
-      <i class="bi bi-file-plus-fill" id="bottone-aggiungi" style="cursor: pointer;"></i>
-      
-      <div class="nuovo">
-        <form id="form-aggiungi-prodotto">
-          
-          <input type="text" id="input-titolo" placeholder="Nome Prodotto">
-          <input type="number" id="input-prezzo" placeholder="Prezzo" min="0">
-          <input type="text" id="input-descrizione" placeholder="Descrizione Prodotto">
-          
-          <input type="text" id="input-annoaccademico" placeholder="Anno Accademico (es. 2024/25)">
-          <input type="number" id="input-voto" placeholder="Voto Esame" min="18" max="30">
-          
-        </form>
+        <div class="nuova-carta">
+          <i class="bi bi-file-plus-fill" id="bottone-aggiungi" style="cursor: pointer;"></i>
+
+          <div class="nuovo">
+            <form id="form-aggiungi-prodotto">
+
+              <input type="text" id="input-titolo" placeholder="Nome Prodotto">
+              <input type="number" id="input-prezzo" placeholder="Prezzo" min="0">
+              <input type="text" id="input-descrizione" placeholder="Descrizione Prodotto">
+
+              <input type="text" id="input-annoaccademico" placeholder="Anno Accademico (es. 2024/25)">
+              <input type="number" id="input-voto" placeholder="Voto Esame" min="18" max="30">
+
+            </form>
+          </div>
+        </div>
+
       </div>
-    </div>
+    </article>
 
-    </div>
-</article>
-
-        <article id="oggettiSmarriti">
+    <article id="oggettiSmarriti">
       <h2>Oggetti Smarriti</h2>
       <div class="contenitore-oggetti">
         <div class="nuova-carta">
@@ -182,7 +190,7 @@
     </p>
   </footer>
 
-    <script src="prodotti.js"></script>
+  <script src="prodotti.js"></script>
 </body>
 
 </html>
