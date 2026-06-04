@@ -5,7 +5,9 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors());
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // Importiamo il file del router dei prodotti,eventi e utenti che abbiamo appena creato
 const prodottiRouter = require('./routes/prodotti');
@@ -37,4 +39,5 @@ app.use('/api/utenti', utentiRouter);
 
 // Avvio del server
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => console.log(`Server sulla porta ${PORT}`));

@@ -89,26 +89,32 @@
       </div>
     </div>
 
-    <div class="login">
-      <h2>Accedi o Registra il Tuo Account</h2>
-      <form class="form-login" action="">
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <label for="dipartimento"></label>
-        <select id="dipartimento" name="dipartimento">
-          <option value="" disabled selected>Seleziona Dipartimento</option><!-- disabled selection non permette di selezionerla come opzione ma di usarla solo come istruzione per indicare cosa inserire nella casella-->
-          <option value="Ingegneria Informatica">Ingegneria Informatica</option>
-          <option value="Ingegneria Elettronica">Ingegneria Elettronica</option>
-          <option value="Ingegneria Meccanica">Ingegneria Meccanica</option>
-          <option value="Ingegneria Civile">Ingegneria Civile</option>
-          <option value="Ingegneria Gestionale">Ingegneria Gestionale</option>
-        </select>
-        <div class="bottoni-login">
-          <button type="submit" class="btn-primary">Accedi</button>
-          <button type="submit" class="btn-primary">Registrati</button>
-        </div>
-      </form>
-    </div>
+<div class="login">
+  <h2>Accedi al Tuo Account</h2>
+  <form class="form-login" method="POST" action="http://localhost:5000/api/utenti/login">
+  <input type="text" name="username" placeholder="Username" required>
+  <input type="password" name="password" placeholder="Password" required>
+  <button type="submit" class="btn-primary">Accedi</button>
+</form>
+
+  <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ccc;">
+
+  <h2>Oppure Registrati ora</h2>
+  <form class="form-login" method="POST" action="http://localhost:5000/api/utenti/registrati">
+    <input type="text" name="username" placeholder="Scegli Username" required>
+    <input type="password" name="password" placeholder="Scegli Password" required>
+    
+    <select name="dipartimento" required>
+      <option value="" disabled selected>Seleziona Dipartimento</option>
+      <option value="Ingegneria Informatica">Ingegneria Informatica</option>
+      <option value="Ingegneria Elettronica">Ingegneria Elettronica</option>
+      <option value="Ingegneria Meccanica">Ingegneria Meccanica</option>
+      <option value="Ingegneria Civile">Ingegneria Civile</option>
+      <option value="Ingegneria Gestionale">Ingegneria Gestionale</option>
+    </select>
+    <button type="submit" class="btn-primary">Registrati</button>
+  </form>
+</div>
 
     <article id="eventi">
       <h2>Eventi in Arrivo</h2>
