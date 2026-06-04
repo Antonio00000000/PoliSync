@@ -7,8 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Importiamo il file del router dei prodotti che abbiamo appena creato
+// Importiamo il file del router dei prodotti,eventi e utenti che abbiamo appena creato
 const prodottiRouter = require('./routes/prodotti');
+const eventiRouter = require('./routes/eventi');
+const utentiRouter = require('./routes/utenti');
 
 // Connessione al Database MongoDB
 mongoose.connect(process.env.MONGODB_URI)
@@ -25,6 +27,8 @@ app.get('/', (req, res) => res.send('API PoliSync Attiva'));
 // Diciamo ad Express: "Tutte le richieste che iniziano con /api/prodotti 
 // devono essere gestite dal file prodottiRouter".
 app.use('/api/prodotti', prodottiRouter);
+app.use('/api/eventi', eventiRouter);
+app.use('/api/utenti', utentiRouter);
 
 // Quando il tuo amico creerà le funzioni per gli eventi, farà semplicemente così:
 // const eventiRouter = require('./routes/eventi');
