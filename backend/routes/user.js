@@ -28,37 +28,33 @@ const utenteSchema = new mongoose.Schema({
 const Utente = mongoose.model('Utente', utenteSchema);
 
 //crea un nuovo utente
-const nuovoUtente = async (username, password, dipartimento) => {
+router.post('/register', async (req, res) => {
+
     //mi salvo la password criptata
     let psw = await bcrypt.hash(password, 10);
     
-    //mappature per creare un nuovo utente con i dati inseriti e salvarlo nel database
-    const utente = new Utente({ username,password: psw, dipartimento });
-    return await utente.save();
-};
+    try{
+        const nuovoUtente = new Utente(req.body);
+        await nuovoUtente.save();
+        res.status(201).json(nuovoUtente);
+    } catch (err) {
+        res.status(500).json({ error: 'Errore durante la registrazione dell\'utente' });
+    }
+});
 
 //funzione per controllare se le credenziali sono corrette al login
-const controllo = async (username, password, dipartimento) => {
-try {
+router.post('/login', async (req, res) => {
         const user = await Utente.findOne({ username });
         
         // controllo se l'utente esiste effettivamente nel database
-        if (!user) {
+        if (!user)
             throw new Error('Credenziali non valide o devi prima registrarti');
-        }
-
-        // mi compara la password inserita con quella salvata nel database
-        const isMatch = await bcrypt.compare(password, user.password);
-        
-        if (isMatch) {
+        // se esiste l'utente, mi compara la password inserita con quella salvata nel database
+        else  const isMatch = await bcrypt.compare(password, user.password);
+        if (isMatch)
             return true;
-        } else {
-            throw new Error('Credenziali non valide o devi prima registrarti');
-        }
-    } catch (err) {
-        console.error('Errore durante il controllo delle credenziali:', err);
-        throw err;  
-    }
-};
+        else
+            throw new Error('password errata');
+});
 
 module.exports = router;
