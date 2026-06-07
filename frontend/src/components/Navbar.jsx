@@ -1,51 +1,34 @@
-import React from 'react';
-// Importiamo 'Link' da react-router-dom. Serve a navigare tra le pagine 
-// SENZA ricaricare il sito web, comportamento tipico delle Single Page Application.
-import { Link } from 'react-router-dom';
+// ============================================================
+// COMPONENTE: Navbar
+// ============================================================
+// Dispensa pag. 13: "React permette di separare le
+// responsabilità dei diversi componenti"
+// La navbar era in index.html, ora è un componente separato
+// ============================================================
 
-function Navbar() {
-  
-  /* Questa è una funzione che gestisce l'Evento di submit del form.
-     Quando premi "Invio" nella barra di ricerca, il browser per default ricarica 
-     la pagina. e.preventDefault() BLOCCA questo comportamento standard.
-  */
-  const handleSearch = (e) => {
-    e.preventDefault(); 
-    console.log("Ricerca in corso...");
-  };
+export default function Navbar() {
+    return (
+        <nav className="navbar">
+            <div className="logo-container">
+                <img src="immagini/logo_Background Removal.png" alt="Logo PoliSync" />
+            </div>
 
-  return (
-    // In JSX usiamo className invece di class per assegnare gli stili CSS
-    <nav className="navbar-container">
-      
-      {/* Il Link funge da tag <a>. 'to="/"' riporta sempre alla pagina principale */}
-      <Link to="/" className="logo-section">
-        <img src="/logo.png" alt="PoliSync Logo" />
-        <div className="logo-text">
-          Poli<span>Sync</span>
-        </div>
-      </Link>
+            <div className="nav-links">
+                {/* Dispensa pag. 6: in JSX usiamo className al posto di class */}
+                <a href="#eventi">Eventi</a>
+                <a href="#studio">Aule Studio</a>
+                <a href="#prodotti">Prodotti</a>
+                <a href="#oggettiSmarriti">Oggetti Smarriti</a>
+                <a href="#carrello"><i className="bi bi-cart"></i></a>
+            </div>
 
-      <div className="nav-links">
-        <Link to="/eventi">Eventi</Link>
-        <Link to="/studio">Studio</Link>
-        <Link to="/oggettiSmarriti">Oggetti Smarriti</Link>
-        <Link to="/prodotti">Prodotti</Link>
-        
-        <Link to="/carrello" className="cart-icon">
-          <i className="bi bi-cart3"></i>
-        </Link>
-
-        {/* Colleghiamo la funzione handleSearch creata sopra all'evento onSubmit del form */}
-        <form className="search-form" onSubmit={handleSearch}>
-          <i className="bi bi-search"></i>
-          {/* Tag input autoconclusivo (con la / finale), obbligatorio in React */}
-          <input type="text" placeholder="Cerca..." />
-        </form>
-      </div>
-    </nav>
-  );
+            <div className="nav-search">
+                {/* Non usiamo action sul form: la ricerca sarà gestita via JS */}
+                <form id="search-form">
+                    <input type="text" id="search-input" placeholder="Cerca..." />
+                    <i className="bi bi-search" id="menu-icon"></i>
+                </form>
+            </div>
+        </nav>
+    );
 }
-
-// Esportiamo il componente per poterlo importare in App.jsx
-export default Navbar;

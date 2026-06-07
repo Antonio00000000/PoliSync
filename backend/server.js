@@ -1,43 +1,101 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');   // necessario per leggere i cookie (refresh token)
 require('dotenv').config();
 
+// ============================================================
+// IMPORTAZIONE PASSPORT E SESSION
+// ============================================================
+
+const expressSession = require('express-session');
+const passport = require('passport');
+
 const app = express();
-app.use(cors());
+
+// ============================================================
+// MIDDLEWARE DI BASE
+// ============================================================
+
+app.use(cors({
+    origin: 'http://localhost:5173',   // indirizzo del frontend React
+    credentials: true                  // necessario per inviare i cookie con fetch
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Importiamo il file del router dei prodotti,eventi e utenti che abbiamo appena creato
+// Permette di leggere i cookie dalla richiesta (es. il refreshToken)
+app.use(cookieParser());
+
+// ============================================================
+// CONFIGURAZIONE SESSIONE
+// ============================================================
+
+app.use(expressSession({
+    secret: process.env.SESSION_SECRET || 'polisync_secret',
+    resave: false,              // non riscrive la sessione se non cambia
+    saveUninitialized: false,   // non crea sessioni vuote
+    cookie: {
+        httpOnly: true,         // cookie non accessibile da JavaScript
+        maxAge: 24 * 60 * 60 * 1000   // sessione valida 24 ore
+    }
+}));
+
+// ============================================================
+// INIZIALIZZAZIONE PASSPORT
+// ============================================================
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+// ============================================================
+// IMPORTAZIONE DEI ROUTER
+// ============================================================
+
 const prodottiRouter = require('./routes/prodotti');
 const eventiRouter = require('./routes/eventi');
+
+// Il router degli utenti esporta sia il router che il middleware verifyJWT
 const utentiRouter = require('./routes/utenti');
 
-// Connessione al Database MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB Connesso con successo!'))
-  .catch(err => console.log('Errore di connessione a MongoDB:', err));
+// ============================================================
+// CONNESSIONE A MONGODB
+// ============================================================
 
-// Rotta di test iniziale
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log('MongoDB Connesso con successo!'))
+    .catch(err => console.log('Errore di connessione a MongoDB:', err));
+
+
+// ============================================================
+// ROTTA DI TEST
+// ============================================================
+
 app.get('/', (req, res) => res.send('API PoliSync Attiva'));
 
 
-// =======================================================================
-// COLLEGAMENTO DEI ROUTER (I moduli esterni)
-// =======================================================================
-// Diciamo ad Express: "Tutte le richieste che iniziano con /api/prodotti 
-// devono essere gestite dal file prodottiRouter".
-app.use('/api/prodotti', prodottiRouter);
-app.use('/api/eventi', eventiRouter);
+// ============================================================
+// COLLEGAMENTO DEI ROUTER
+// ============================================================
+
+
+// Rotte non protette (accessibili senza token)
 app.use('/api/utenti', utentiRouter);
 
-// Quando il tuo amico creerà le funzioni per gli eventi, farà semplicemente così:
-// const eventiRouter = require('./routes/eventi');
-// app.use('/api/eventi', eventiRouter);
+// Da qui in poi tutte le rotte richiedono un access token valido
+app.use(utentiRouter.verifyJWT);
+
+// Rotte PROTETTE (richiedono access token nell'header Authorization)
+app.use('/api/prodotti', prodottiRouter);
+app.use('/api/eventi', eventiRouter);
 
 
-// Avvio del server
+// ============================================================
+// AVVIO DEL SERVER
+// ============================================================
+
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => console.log(`Server sulla porta ${PORT}`));
