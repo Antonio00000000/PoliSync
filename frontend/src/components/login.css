@@ -1,0 +1,65 @@
+.login{
+    margin: 20px auto;
+    background-color: #088599;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /*per bloccare la vista dei servizi se non loggato*/
+    /*position: sticky;
+    top: 20px;
+    height: 100vh;*/
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login input, .login select {
+    width: 100%;
+    /* L'input occupa tutta la larghezza disponibile */
+    padding: 10px;
+    /* Spaziatura interna per rendere l'input più leggibile */
+    margin-bottom: 10px;
+    /* Spazio sotto ogni input */
+    border: 1px solid #ccc;
+    /* Bordo grigio chiaro per gli input */
+    border-radius: 5px;
+    /* Angoli arrotondati per gli input */
+    font-family: 'Montserrat', sans-serif;
+    max-width: 200px;
+    /* Effetto morbido per il focus */
+    transition: all 0.3s ease;
+    outline: none;
+    /* Rimuove il bordo nero predefinito del browser */
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #112142;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-primary:hover {
+    background-color: #0a1b2a;
+    /* Colore più scuro al passaggio del mouse */
+    cursor: pointer;
+}
+
+.bottoni-login {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    gap: 10px;
+}

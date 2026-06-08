@@ -1,0 +1,131 @@
+.contenitore-eventi,
+.contenitore-aula,
+.contenitore-oggetti,
+.contenitore-servizi,
+.contenitore-prodotti {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Spazio tra le carte */
+    display: flex;
+    align-items: stretch;
+    /* Allinea le carte in altezza */
+    justify-content: space-between;
+    /* Distribuisce le carte con spazio tra di loro */
+}
+
+.nuova-carta {
+    background-color: #f0f0f0;
+    /* Colore di sfondo della carta */
+    border-radius: 10px;
+    /* Angoli arrotondati */
+    padding: 20px;
+    /* Spaziatura interna */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Ombra per un effetto di profondità */
+    width: 30vw;
+    /* La carta occupa il 30% della larghezza della finestra in modo da mettere 2 carte una accanto all'altra */
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 300px;
+}
+
+.nuova-carta i {
+    font-size: 3vw;
+    /* Dimensione dell'icona reattiva alla larghezza dello schermo */
+    color: #088599;
+    /* Colore dell'icona */
+}
+
+.eventi:hover,
+.aula:hover,
+.oggetto:hover,
+.servizio:hover,
+.prodotto:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Ombra più intensa al passaggio del mouse */
+    transform: translateY(-5px);
+    /* Solleva leggermente la carta al passaggio del mouse */
+    transition: all 0.3s ease;
+    /* Transizione fluida per l'effetto hover */
+}
+
+.nuova-carta input {
+    width: 100%;
+    /* L'input occupa tutta la larghezza disponibile */
+    padding: 10px;
+    /* Spaziatura interna per rendere l'input più leggibile */
+    margin-bottom: 10px;
+    /* Spazio sotto ogni input */
+    border: 1px solid #ccc;
+    /* Bordo grigio chiaro per gli input */
+    border-radius: 5px;
+    /* Angoli arrotondati per gli input */
+    font-family: 'Montserrat', sans-serif;
+    max-width: 200px;
+    /* Effetto morbido per il focus */
+    transition: all 0.3s ease;
+    outline: none;
+    /* Rimuove il bordo nero predefinito del browser */
+}
+
+/* Quando l'utente clicca dentro (Focus) */
+.form-input:focus {
+    background-color: #ffffff;
+    border-color: #088599;
+    /* Il colore cyan/azzurro di PoliSync */
+    box-shadow: 0 0 0 3px rgba(8, 133, 153, 0.15);
+    /* Ombra esterna leggera */
+}
+
+/* Stile per il testo temporaneo (placeholder) */
+.form-input::placeholder {
+    color: #aaa;
+    font-weight: 400;
+}
+
+.nuova-carta #Titolo {
+    font-size: 1.2vw;
+    /* Dimensione del testo reattiva alla larghezza dello schermo */
+    margin-bottom: 10%;
+    /* Spazio sotto il titolo */
+}
+
+.nuova-carta #Data,
+.nuova-carta #Prezzo {
+    color: #abe5ed;
+    font-size: 1.2vw;
+    /* Dimensione del testo reattiva alla larghezza dello schermo */
+    margin-bottom: 10%;
+    /* Spazio sotto la data */
+    max-height: 10px;
+}
+
+.nuova-carta #Descrizione {
+    font-size: 1vw;
+    /* Dimensione del testo reattiva alla larghezza dello schermo */
+    line-height: 1.5;
+    /* Altezza della linea per una migliore leggibilità */
+    max-height: 10px;
+
+}
+
+.eventi,
+.aula,
+.oggetto,
+.servizio,
+.prodotto {
+    background-color: #abe5ed;
+    /* Colore di sfondo delle carte esistenti */
+    border-radius: 15px;
+    /* Angoli arrotondati */
+    padding: 30px 20px;
+    /* Spaziatura interna */
+    width: 30vw;
+    /* La carta occupa il 30% della larghezza del contenitore per permettere 3 carte affiancate */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Ombra per un effetto di profondità */
+    max-width: 300px;
+}
